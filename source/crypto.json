@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "engagelab.cc",
+        "gotoda.co",
+        "hotbookzone.com",
+        "mocortech.com",
+        "flytogarden.com",
+        "online-metrix.net",
+        "ng-dex.com",
+        "bycsi.com",
+        "bybdc6.com",
+        "byapps.net",
+        "byabcde.com",
+        "byd3c3.com",
+        "greentreeone.com"
+      ],
+      "domain_keyword": [
+      	"gate",
+        "365huo",
+        "aicoin",
+        "akadns",
+        "appsflyer",
+        "binance",
+        "bitget",
+        "byabc",
+        "byabcd",
+        "byadc",
+        "byapps",
+        "bybdc",
+        "bybit",
+        "bycsi",
+        "byd3c3",
+        "byffbb",
+        "flytogarden",
+        "gate",
+        "geetest",
+        "gotoda",
+        "greentreeone",
+        "htx",
+        "mocortech",
+        "nexo",
+        "ng-dex",
+        "okx",
+        "onekey",
+        "online-metrix",
+        "pioneerex",
+        "pionex",
+        "redotpay"
+      ]
+    }
+  ]
+}
