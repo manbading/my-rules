@@ -3,19 +3,19 @@
   "rules": [
     {
       "domain_suffix": [
-        "engagelab.cc",
+		    "engagelab.cc",
+        "byabcde.com",
+        "byapps.net",
+        "bybdc6.com",
+        "bycsi.com",
+        "byd3c3.com",
+        "flytogarden.com",
         "gotoda.co",
+        "greentreeone.com",
         "hotbookzone.com",
         "mocortech.com",
-        "flytogarden.com",
-        "online-metrix.net",
         "ng-dex.com",
-        "bycsi.com",
-        "bybdc6.com",
-        "byapps.net",
-        "byabcde.com",
-        "byd3c3.com",
-        "greentreeone.com"
+        "online-metrix.net"
       ],
       "domain_keyword": [
       	"gate",
