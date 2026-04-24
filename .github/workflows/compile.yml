@@ -5,33 +5,41 @@ on:
     branches:
       - main
     paths:
-      - 'source/*.json' # 仅当 source 文件夹下的 json 变动时触发
-  workflow_dispatch: # 允许手动触发
+      - 'source/*.json'
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # 升级到 v4 以解决 Node.js 版本警告
 
       - name: Install sing-box
         run: |
-          # 获取最新的 sing-box 二进制文件
-          bash <(curl -L https://raw.githubusercontent.com/SagerNet/sing-box/main/install.sh)
+          # 获取最新的二进制文件并解压
+          curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.11.0-alpha.5/sing-box-1.11.0-alpha.5-linux-amd64.tar.gz
+          tar -xzf sing-box.tar.gz
+          # 找到解压后的可执行文件并移动到系统路径
+          sudo mv sing-box-*/sing-box /usr/local/bin/
 
       - name: Compile rules
         run: |
           mkdir -p ./dist
-          # 遍历 source 目录下所有 json 并编译
-          for file in source/*.json; do
-            filename=$(basename "$file" .json)
-            sing-box rule-set compile "$file" -o "./dist/${filename}.srs"
-          done
+          # 检查是否有 json 文件
+          if [ -n "$(ls source/*.json 2>/dev/null)" ]; then
+            for file in source/*.json; do
+              filename=$(basename "$file" .json)
+              sing-box rule-set compile "$file" -o "./dist/${filename}.srs"
+            done
+          else
+            echo "No json files found in source/"
+            exit 1
+          fi
 
       - name: Deploy to Branch
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4 # 升级到 v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: sing # 编译后的文件存放的分支名
+          publish_branch: sing
