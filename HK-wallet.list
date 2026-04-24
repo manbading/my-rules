@@ -1,20 +1,21 @@
-# Generated from HK-wallet.json at Fri Apr 24 10:57:02 UTC 2026
+# Generated from HK-wallet.json at Fri Apr 24 11:05:29 UTC 2026
+DOMAIN-SUFFIX,antbank.hk
+DOMAIN-SUFFIX,airstarbank.com
+DOMAIN-SUFFIX,bochk.com
 DOMAIN-SUFFIX,fusionbank.com
+DOMAIN-SUFFIX,futunn.com
+DOMAIN-SUFFIX,hsbc.com.hk
+DOMAIN-SUFFIX,ibkr.com
+DOMAIN-SUFFIX,ifastcorp.com
+DOMAIN-SUFFIX,lbctrl.com
+DOMAIN-SUFFIX,lbkrs.com
+DOMAIN-SUFFIX,longbridgeapp.com
+DOMAIN-SUFFIX,schwab.com
+DOMAIN-SUFFIX,tiqcdn.com
 DOMAIN-SUFFIX,welab.bank
 DOMAIN-SUFFIX,za.group
 DOMAIN-SUFFIX,zaticdn.com
-DOMAIN-SUFFIX,schwab.com
-DOMAIN-SUFFIX,ibkr.com
-DOMAIN-SUFFIX,zr66.com
-DOMAIN-SUFFIX,lbkrs.com
-DOMAIN-SUFFIX,longbridgeapp.com
-DOMAIN-SUFFIX,lbctrl.com
-DOMAIN-SUFFIX,ifastcorp.com
 DOMAIN-SUFFIX,zimperium.com
-DOMAIN-SUFFIX,tiqcdn.com
-DOMAIN-SUFFIX,hsbc.com.hk
-DOMAIN-SUFFIX,bochk.com
-DOMAIN-SUFFIX,futunn.com
-DOMAIN-SUFFIX,airstarbank.com
+DOMAIN-SUFFIX,zr66.com
 DOMAIN-KEYWORD,ant-hkbank
 DOMAIN-KEYWORD,wise
