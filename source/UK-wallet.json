@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "braze.eu",
+        "analytics.adjust.com",
+        "paypalobjects.com",
+        "eu.adjust.com",
+        "eu.iterable.com"
+      ],
+      "domain_keyword": [
+      	"trading212",
+        "lemonade",
+        "monzo",
+        "sumup"
+      ]
+    }
+  ]
+}
