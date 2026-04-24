@@ -3,23 +3,24 @@
   "rules": [
     {
       "domain_suffix": [
+        "antbank.hk",
+        "airstarbank.com",
+        "bochk.com",
         "fusionbank.com",
+        "futunn.com",
+        "hsbc.com.hk",
+        "ibkr.com",
+        "ifastcorp.com",
+        "lbctrl.com",
+        "lbkrs.com",
+        "longbridgeapp.com",
+        "schwab.com",
+        "tiqcdn.com",
         "welab.bank",
         "za.group",
         "zaticdn.com",
-        "schwab.com",
-        "ibkr.com",
-        "zr66.com",
-        "lbkrs.com",
-        "longbridgeapp.com",
-        "lbctrl.com",
-        "ifastcorp.com",
         "zimperium.com",
-        "tiqcdn.com",
-        "hsbc.com.hk",
-        "bochk.com",
-        "futunn.com",
-        "airstarbank.com"
+        "zr66.com"
       ],
       "domain_keyword": [
       	"ant-hkbank",
