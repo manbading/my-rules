@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "eu.sardine.ai",
+        "api-eu.mixpanel.com",
+        "demdex.net",
+        "collect.igodigital.com",
+        "blueshellcloud.com",
+        "trusteer.com",
+        "tealiumiq.com",
+        "eu.freshchat.com",
+        "api.flagsmith.com",
+        "seondnsresolve.com"
+      ],
+      "domain_keyword": [
+        "tomorrow",
+      	"bbva",
+      	"monese",
+      	"bunq"
+      ]
+    }
+  ]
+}
