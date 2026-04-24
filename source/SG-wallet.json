@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "recaptcha.net",
+        "digitalcardservice.com"
+      ],
+      "domain_keyword": [
+        "dtcpay"
+      ]
+    }
+  ]
+}
