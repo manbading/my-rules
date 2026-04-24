@@ -1,4 +1,4 @@
-name: Compile Rule Sets
+name: Sync Multi-Format Rules
 
 on:
   push:
@@ -13,33 +13,50 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # 升级到 v4 以解决 Node.js 版本警告
+        uses: actions/checkout@v4
 
-      - name: Install sing-box
+      - name: Install Tools
         run: |
-          # 获取最新的二进制文件并解压
+          # 安装最新的 sing-box
           curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.11.0-alpha.5/sing-box-1.11.0-alpha.5-linux-amd64.tar.gz
           tar -xzf sing-box.tar.gz
-          # 找到解压后的可执行文件并移动到系统路径
           sudo mv sing-box-*/sing-box /usr/local/bin/
+          # 安装 jq
+          sudo apt-get install -y jq
 
-      - name: Compile rules
+      - name: Generate Rules
         run: |
           mkdir -p ./dist
-          # 检查是否有 json 文件
-          if [ -n "$(ls source/*.json 2>/dev/null)" ]; then
-            for file in source/*.json; do
-              filename=$(basename "$file" .json)
-              sing-box rule-set compile "$file" -o "./dist/${filename}.srs"
-            done
-          else
-            echo "No json files found in source/"
-            exit 1
-          fi
+          for file in source/*.json; do
+            filename=$(basename "$file" .json)
+            
+            echo "Processing $filename..."
 
-      - name: Deploy to Branch
-        uses: peaceiris/actions-gh-pages@v4 # 升级到 v4
+            # === 1. 编译 sing-box 二进制格式 (.srs) ===
+            sing-box rule-set compile "$file" -o "./dist/${filename}.srs"
+            
+            # === 2. 转换为 Surge 文本格式 (.list) ===
+            # 初始化文件并添加头部注释
+            echo "# Generated from $filename.json at $(date)" > "./dist/${filename}.list"
+            
+            # 提取 domain
+            jq -r '.rules[].domain[]?' "$file" | sed 's/^/DOMAIN,/' >> "./dist/${filename}.list"
+            # 提取 domain_suffix
+            jq -r '.rules[].domain_suffix[]?' "$file" | sed 's/^/DOMAIN-SUFFIX,/' >> "./dist/${filename}.list"
+            # 提取 domain_keyword
+            jq -r '.rules[].domain_keyword[]?' "$file" | sed 's/^/DOMAIN-KEYWORD,/' >> "./dist/${filename}.list"
+            # 提取 ip_cidr
+            jq -r '.rules[].ip_cidr[]?' "$file" | sed 's/^/IP-CIDR,/' >> "./dist/${filename}.list"
+            
+            # 清理生成的空行（如果有的话）
+            sed -i '/,$/d' "./dist/${filename}.list"
+          done
+
+      - name: Deploy to 'sing' Branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: sing
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
