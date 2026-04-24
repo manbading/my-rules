@@ -1,0 +1,37 @@
+name: Compile Rule Sets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'source/*.json' # 仅当 source 文件夹下的 json 变动时触发
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install sing-box
+        run: |
+          # 获取最新的 sing-box 二进制文件
+          bash <(curl -L https://raw.githubusercontent.com/SagerNet/sing-box/main/install.sh)
+
+      - name: Compile rules
+        run: |
+          mkdir -p ./dist
+          # 遍历 source 目录下所有 json 并编译
+          for file in source/*.json; do
+            filename=$(basename "$file" .json)
+            sing-box rule-set compile "$file" -o "./dist/${filename}.srs"
+          done
+
+      - name: Deploy to Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: sing # 编译后的文件存放的分支名
