@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "fusionbank.com",
+        "welab.bank",
+        "za.group",
+        "zaticdn.com",
+        "schwab.com",
+        "ibkr.com",
+        "zr66.com",
+        "lbkrs.com",
+        "longbridgeapp.com",
+        "lbctrl.com",
+        "ifastcorp.com",
+        "zimperium.com",
+        "tiqcdn.com",
+        "hsbc.com.hk",
+        "bochk.com",
+        "futunn.com",
+        "airstarbank.com"
+      ],
+      "domain_keyword": [
+      	"ant-hkbank",
+        "wise"
+      ]
+    }
+  ]
+}
